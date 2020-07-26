@@ -1,0 +1,30 @@
+{
+  "name": "template-engine-employee-summary",
+  "version": "1.0.0",
+  "description": "a software engineering team generator command line application",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-mccaffrey/template-engine-employee-summary.git"
+  },
+  "author": "Aisling McCaffrey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/a-mccaffrey/template-engine-employee-summary/issues"
+  },
+  "homepage": "https://github.com/a-mccaffrey/template-engine-employee-summary#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "inquirer": "^7.3.3",
+    "jest": "^26.1.0",
+    "path": "^0.12.7",
+    "util": "^0.12.3"
+  }
+}
