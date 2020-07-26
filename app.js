@@ -14,7 +14,7 @@ const render = require("./lib/htmlRenderer");
 
 let team = [];
 
-let start = async () => {
+let startOthers = async () => {
     inquirer.prompt([{
         type: "list",
         message: "What type of employee would you like to add?",
@@ -22,7 +22,6 @@ let start = async () => {
         choices: [
             "Engineer",
             "Intern",
-            "Manager",
             "Exit and generate my page"
         ]
     }]).then(function(answer) {
@@ -30,8 +29,6 @@ let start = async () => {
             startEngineer();
         } else if (answer.role === "Intern") {
             startIntern();
-        } else if (answer.role === "Manager") {
-            startManager();
         } else if (answer.role === "Exit and generate my page") {
             writeFileasync(outputPath, render(team));
         } else {
@@ -57,7 +54,7 @@ function startEngineer() {
         }
     ]).then(function(answers) {
         team.push(new Engineer(answers.name, answers.id, answers.email, answers.github));
-        start();
+        startOthers();
     })
 };
 function startIntern() {
@@ -77,31 +74,31 @@ function startIntern() {
         }
     ]).then(function(answers) {
         team.push(new Intern(answers.name, answers.id, answers.email, answers.school));
-        start();
+        startOthers();
     })
 }
 function startManager() {
     inquirer.prompt([
         {
             name: "id",
-            message: "Enter Employee ID:"
+            message: "Enter your Manager ID:"
         }, {
             name: "name",
-            message: "Enter Employee Name:"
+            message: "Enter your name:"
         }, {
             name: "email",
-            message: "Enter Employee Email:"
+            message: "Enter your Email:"
         }, {
             name: "officeNumber",
-            message: "Enter Manager Office Number:"
+            message: "Enter your Manager Office Phone Number:"
         }
     ]).then(function(answers) {
         team.push(new Manager(answers.name, answers.id, answers.email, answers.officeNumber));
-        start();
+        startOthers();
     })
 }
 
-start();
+startManager();
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
